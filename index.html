@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="vi">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Lời mời đặc biệt</title>
+  <title>Special Invitation</title>
   <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Quicksand&display=swap" rel="stylesheet">
   <style>
     body {
@@ -90,19 +90,48 @@
     button:hover {
       background: #ff4fa2;
     }
+    #popup, #bonusCard {
+      display: none;
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: white;
+      border-radius: 16px;
+      padding: 30px;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+      z-index: 999;
+      text-align: center;
+      max-width: 90%;
+    }
+    #popup button, #bonusCard button {
+      margin-top: 20px;
+    }
   </style>
 </head>
 <body>
   <div class="card">
     <div class="emoji">🍿🌆✨</div>
-    <h1>Chào Quỳnh!</h1>
-    <p>Cảm ơn em đã đồng ý với lời mời đi xem phim và ăn tối cùng anh.</p>
-    <p>Anh rất vui vì chúng ta có thể dành thời gian tìm hiểu nhau nhiều hơn 🌟</p>
-    <p>Hẹn gặp em vào tối nay nhé 😉</p>
-    <button onclick="alert('Anh sẽ nhắn giờ và địa điểm cho em ngay nhé! 💬')">Chốt lịch nào! 💕</button>
+    <h1>Hey Quỳnh!</h1>
+    <p>Thank you for accepting my invitation to dinner and a movie 🌟</p>
+    <p>I'm truly excited we’ll have more time to get to know each other 💖</p>
+    <p>See you at <strong>7:30 PM on June 25th, 2025</strong> 😉</p>
+    <button onclick="showPopup()">Let’s lock it in! 💕</button>
   </div>
 
-  <!-- Hiệu ứng tim bay -->
+  <div id="popup">
+    <p style="font-size: 20px">🎉 Woohoo! It’s a date on <strong>25/6/2025 – 7:30PM</strong>!</p>
+    <p>Click below for a tiny surprise 🥰</p>
+    <button onclick="showBonus()">Show me 💌</button>
+  </div>
+
+  <div id="bonusCard">
+    <p style="font-size: 18px">🌸 You’re amazing just the way you are 🌸</p>
+    <p>Can't wait to see your smile! 😄</p>
+    <button onclick="closeBonus()">Awww okay 😳</button>
+  </div>
+
+  <!-- Hearts flying animation -->
   <script>
     function createHeart() {
       const heart = document.createElement('div');
@@ -113,7 +142,19 @@
       setTimeout(() => heart.remove(), 5000);
     }
     setInterval(createHeart, 300);
+
+    function showPopup() {
+      document.getElementById('popup').style.display = 'block';
+    }
+
+    function showBonus() {
+      document.getElementById('popup').style.display = 'none';
+      document.getElementById('bonusCard').style.display = 'block';
+    }
+
+    function closeBonus() {
+      document.getElementById('bonusCard').style.display = 'none';
+    }
   </script>
 </body>
 </html>
-Update giao diện tim bay
