@@ -4,38 +4,91 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Lời mời đặc biệt</title>
+  <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Quicksand&display=swap" rel="stylesheet">
   <style>
     body {
-      background: #fff0f5;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #ffe0ec, #fff0f5);
+      font-family: 'Quicksand', sans-serif;
       text-align: center;
       padding: 50px;
       color: #333;
+      overflow: hidden;
     }
     .card {
-      background: #ffffffcc;
-      border-radius: 16px;
-      padding: 30px;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      background: #ffffffee;
+      border-radius: 20px;
+      padding: 40px 30px;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
       display: inline-block;
-      max-width: 500px;
+      max-width: 520px;
       animation: fadeIn 1s ease;
     }
     h1 {
       color: #d81b60;
-      margin-bottom: 10px;
+      font-family: 'Pacifico', cursive;
+      font-size: 32px;
+      margin-bottom: 16px;
     }
     p {
       font-size: 18px;
-      margin: 10px 0;
+      margin: 12px 0;
     }
     .emoji {
-      font-size: 32px;
-      margin-bottom: 10px;
+      font-size: 36px;
+      margin-bottom: 14px;
+      animation: bounce 1.5s infinite;
+    }
+    .heart {
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      background: red;
+      transform: rotate(45deg);
+      top: 0;
+      animation: float 5s infinite ease-in;
+      opacity: 0.8;
+    }
+    .heart:before, .heart:after {
+      content: '';
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      background: red;
+      border-radius: 50%;
+    }
+    .heart:before {
+      top: -10px;
+      left: 0;
+    }
+    .heart:after {
+      left: -10px;
+      top: 0;
+    }
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-8px); }
+    }
+    @keyframes float {
+      0% { transform: translateY(0) rotate(45deg); }
+      100% { transform: translateY(-100vh) rotate(45deg); }
     }
     @keyframes fadeIn {
       from { opacity: 0; transform: translateY(20px); }
       to { opacity: 1; transform: translateY(0); }
+    }
+    button {
+      margin-top: 24px;
+      padding: 12px 24px;
+      font-size: 16px;
+      background: #ff69b4;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+    button:hover {
+      background: #ff4fa2;
     }
   </style>
 </head>
@@ -46,7 +99,21 @@
     <p>Cảm ơn em đã đồng ý với lời mời đi xem phim và ăn tối cùng anh.</p>
     <p>Anh rất vui vì chúng ta có thể dành thời gian tìm hiểu nhau nhiều hơn 🌟</p>
     <p>Hẹn gặp em vào tối nay nhé 😉</p>
-    <p class="emoji">💌</p>
+    <button onclick="alert('Anh sẽ nhắn giờ và địa điểm cho em ngay nhé! 💬')">Chốt lịch nào! 💕</button>
   </div>
+
+  <!-- Hiệu ứng tim bay -->
+  <script>
+    function createHeart() {
+      const heart = document.createElement('div');
+      heart.classList.add('heart');
+      heart.style.left = Math.random() * 100 + 'vw';
+      heart.style.animationDuration = 4 + Math.random() * 3 + 's';
+      document.body.appendChild(heart);
+      setTimeout(() => heart.remove(), 5000);
+    }
+    setInterval(createHeart, 300);
+  </script>
 </body>
 </html>
+Update giao diện tim bay
